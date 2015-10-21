@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   validates :email, null: false, uniqueness: true
   validates :password, length: { minimum: 6, allow_nil: true}
   attr_reader :password
+  has_many :todos
 
   def self.find_by_credentials(email, password)
     user = User.find_by(email: email)

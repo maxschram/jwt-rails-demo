@@ -1,3 +1,3 @@
 Rails.application.routes.draw do
-  post 'login', 'tokens#create'
+  post 'login', to: 'tokens#create'
 end
