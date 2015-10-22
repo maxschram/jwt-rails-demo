@@ -15,13 +15,13 @@ ActiveRecord::Schema.define(version: 20151021223858) do
 
   create_table "todos", force: :cascade do |t|
     t.text     "body",                       null: false
-    t.integer  "users_id"
+    t.integer  "user_id"
     t.boolean  "done",       default: false, null: false
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
   end
 
-  add_index "todos", ["users_id"], name: "index_todos_on_users_id"
+  add_index "todos", ["user_id"], name: "index_todos_on_user_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",           null: false
