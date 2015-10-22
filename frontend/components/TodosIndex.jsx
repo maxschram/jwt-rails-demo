@@ -1,4 +1,5 @@
 var React = require('react');
+var TodoForm = require('./TodoForm');
 var reqwest = require('reqwest');
 
 module.exports = React.createClass({
@@ -31,6 +32,7 @@ module.exports = React.createClass({
             })
           }
         </ul>
+        <TodoForm />
       </div>
     );
   }

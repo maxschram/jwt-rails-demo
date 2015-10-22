@@ -24941,6 +24941,7 @@
 	'use strict';
 	
 	var React = __webpack_require__(2);
+	var TodoForm = __webpack_require__(214);
 	var reqwest = __webpack_require__(207);
 	
 	module.exports = React.createClass({
@@ -24984,7 +24985,51 @@
 	            todo.body
 	          );
 	        })
-	      )
+	      ),
+	      React.createElement(TodoForm, null)
+	    );
+	  }
+	});
+
+/***/ },
+/* 214 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var React = __webpack_require__(2);
+	var LinkedStateMixin = __webpack_require__(209);
+	var reqwest = __webpack_require__(207);
+	
+	module.exports = React.createClass({
+	  displayName: 'exports',
+	
+	  mixins: [LinkedStateMixin],
+	  getInitialState: function getInitialState() {
+	    return { body: "" };
+	  },
+	  createTodo: function createTodo(e) {
+	    e.preventDefault();
+	    reqwest({
+	      url: 'http://localhost:3000',
+	      method: 'post',
+	      headers: { 'Authorization': localStorage.token },
+	      type: 'json',
+	      data: { todo: this.state },
+	      success: function success(res) {
+	        console.log("Todo added");
+	      },
+	      error: function error(err) {
+	        debugger;
+	      }
+	    });
+	  },
+	  render: function render() {
+	    return React.createElement(
+	      'form',
+	      { onSubmit: this.createTodo },
+	      React.createElement('input', { type: 'text', valueLink: this.linkState('body') }),
+	      React.createElement('input', { type: 'submit' })
 	    );
 	  }
 	});
