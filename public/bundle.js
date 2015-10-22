@@ -24024,7 +24024,7 @@
 	      },
 	      success: (function (resp) {
 	        localStorage.token = resp.token;
-	        this.props.history.pushState(null, 'todos');
+	        this.props.history.pushState(null, '/todos');
 	      }).bind(this),
 	      error: function error(err) {
 	        debugger;
