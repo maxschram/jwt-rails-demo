@@ -10,7 +10,7 @@ module.exports = React.createClass({
   createTodo: function (e) {
     e.preventDefault();
     reqwest({
-      url: 'http://localhost:3000',
+      url: 'http://localhost:3000/todos',
       method: 'post',
       headers: { 'Authorization' : localStorage.token },
       type: 'json',
